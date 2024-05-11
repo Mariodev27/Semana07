@@ -15,7 +15,7 @@ namespace Data
     public class DClient
     {
 
-        public static string connectionString = "Data Source=LAB1504-03\\SQLEXPRESS;Initial Catalog=facturas;User ID=mario;Password=1234";
+        public static string connectionString = "Data Source=LAB1504-03\\SQLEXPRESS;Initial Catalog=FacturaDB;User ID=mario;Password=1234";
 
         public List<Client> ListarClientes()
         {
@@ -70,7 +70,7 @@ namespace Data
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand cmd = new SqlCommand("InsertClient1", connection);
+                SqlCommand cmd = new SqlCommand("InsertClient2", connection);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@address", address);
@@ -89,7 +89,7 @@ namespace Data
                 connection.Open();
                 SqlCommand cmd = new SqlCommand("ActivateClient", connection);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@customer_id", id);
                 cmd.ExecuteNonQuery();
 
             }
@@ -105,7 +105,7 @@ namespace Data
                 connection.Open();
                 SqlCommand cmd = new SqlCommand("DeleteClient", connection);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@customer_id", id);
                 cmd.ExecuteNonQuery();
 
             }
